@@ -1,9 +1,11 @@
 public class Printer {
     private int paper;
     private int printed;
+    private int tonerVolume;
 
-    public Printer(int paper) {
+    public Printer(int paper, int tonerVolume) {
         this.paper = paper;
+        this.tonerVolume = tonerVolume;
     }
 
     public int getPaper() {
@@ -14,11 +16,19 @@ public class Printer {
         return printed;
     }
 
+    public int getTonerVolume() {
+        return tonerVolume;
+    }
+
     public void print(int pages, int copies) {
         if (this.paper >= pages * copies) {
             int printed = pages * copies;
             this.paper -= printed;
             this.printed = printed;
         }
+    }
+
+    public int reduceToner() {
+        return this.tonerVolume -= this.printed;
     }
 }
